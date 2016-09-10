@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Enter your Thoughts</title>
+        <script>
+            setTimeout(function(){
+                window.location="";
+            },10000);
+            
+            function updateScroll(){
+            var element = document.getElementById("uniq");
+            element.scrollTop = element.scrollHeight;
+            }
+
+            setTimeout(updateScroll,500);
+            function PlaySound() {
+                  var sound = document.getElementById("audio");
+                  sound.play()
+            }
+        </script>
+        <style type="text/css">
+            #uniq{
+                width: 100%;
+                background: black;
+                overflow: auto;
+                position: absolute;
+                bottom: 50px;
+                top: 280px;
+                color: white;
+                border-left: 10px solid red;
+                border-radius: 6px;
+            }     
+
+            #content{
+                margin: auto;
+                text-align: center;
+            }  
+
+            .title{
+                text-align: center;
+                color:green;
+            }
+        </style>
+    </head>
+    <body bgcolor="cyan">
+    <audio id="audio" src="/static/music/beep-07.wav" autostart="false"> </audio>
+        <div id="container">
+            <div class="title">
+            <img src="/static/logo.jpg" align='right' />
+                <h1>Enter your thoughts</h1>
+            </div>
+            <div id="content">
+                <form method="post" action="sendText">
+                  <label for="name" >Please enter your name:</label> <br>
+                  <input type="text" name="name" value = {% if name is defined %} {{name}} 
+                  {% else %}
+                    ""
+                  {% endif %}/><br><br><br>
+                  <label for="thought">Please enter your thoughts:</label> <br>
+                  <input type="text" name="thought" autofocus/><br><br>
+                  <input onclick="PlaySound()" type="submit" value="  Send  "/>
+                </form>
+                <br>
+            </div>
+                <div id="uniq">
+                {% for lines in li %}
+                {{ lines }} <br>
+                {% endfor %}
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
+ 

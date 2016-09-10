@@ -1,0 +1,17 @@
+ <html>
+    <head>
+        <title>Result</title>
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>All the thoughts presented by people :</h1>
+            </div>
+            <div id="content">
+                {% for lines in li %}
+                <p>{{ lines }} </p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
