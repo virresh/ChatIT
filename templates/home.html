@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>ChatIT</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            function updateScroll(){
+                var element = document.getElementById("uniq");
+                    element.scrollTop = element.scrollHeight;
+            }
+            setInterval(function(){
+                $("#uniq").load("/chat");
+            },100);
+            setInterval(function(){
+                var y= updateScroll();
+            },1000);
+        </script>
+
+        <style type="text/css">
+            #uniq{
+                width: 80%;
+                height: 50%;
+                background: black;
+                overflow: auto;
+                color: white;
+                border-left: 10px solid red;
+                border-radius: 6px;
+                margin: auto;
+            }     
+
+            #content{
+                color:green;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+            label{
+                font-size: 25px;
+                font-weight: bold;
+
+            }
+            
+            .Tfield{
+                margin: auto;
+                width: 80%;
+            }
+
+            .title{
+                text-align: center;
+                color:green;
+            }
+        </style>
+    </head>
+    <body bgcolor="yellow">
+        <div id="container">
+            <div class="title">
+                <h1>Welcome to ChatIT</h1>
+            </div>
+                <br>
+            <div id="uniq"></div>
+            <div id="wrapper">
+                <div id="content">
+                    <form method="post" action="">
+                        <label for="name" >Name &nbsp; &nbsp; :</label>
+                        <input class="Tfield" type="text" name="name" value = {% if name is defined %} {{name}} 
+                        {% else %}
+                        ""
+                        {% endif %}/>
+                        <br>
+                        <label for="message">Message :</label>
+                        <input class="Tfield" type="text" name="message" autofocus/>
+                        <input type="submit" value="  Send  "/>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        <div style="text-align: center; margin-bottom: 1%">
+        Created by Viresh Gupta
+        </div>
+    </body>
+</html> 

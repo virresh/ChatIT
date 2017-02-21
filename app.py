@@ -1,42 +1,42 @@
 from flask import Flask,render_template,url_for,request,session,escape
 import datetime
 import time
+import os
+
 app = Flask(__name__)
+app.secret_key="MadeByViresh"
 
 @app.route("/")
-@app.route("/sendText")
 def form():
     n=""
     if 'name' in session:
         n= escape(session['name'])
-    f2 = open("thoughtlist.txt","r")
+    f2 = open("chat.txt","r")
     l = []
     for lines in f2:
         l.append(lines)
     f2.close()
-    return render_template('form_submit.html',li=l,name=n)
+    return render_template('home.html',li=l,name=n)
 
-@app.route('/sendText', methods=['POST'])
+@app.route('/', methods=['POST'])
 def sendText():
     if request.method == 'POST':
         session['name'] = request.form['name']
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
     name = request.form['name']
-    t= request.form['thought']
-    file = open("thoughtlist.txt","a")
+    t= request.form['message']
+    file = open("chat.txt","a")
     file.write(st + "  " + name + " : " + t + "\r\n")
     file.close()
-    f2 = open("thoughtlist.txt","r")
+    return render_template('home.html',name=name)#,li=l)
 
-    l = []
-    for lines in f2:
-        l.append(lines)
-    f2.close()
-    return render_template('form_submit.html',li=l,name=name)
+@app.route('/chat/')
+def info():
+    f = open("chat.txt","r")
+    return render_template('texttempl.html',content=f.read())
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+port = int(os.getenv('VCAP_APP_PORT', 8080))
 
 if __name__ == '__main__':
-    app.run(debug=True,port=8002,host='0.0.0.0')
-
+    app.run(port=port)
