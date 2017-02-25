@@ -8,5 +8,5 @@ cd ChatIT/
 python app.py
 ```
 
-Now visit localhost:8002 
+Now visit localhost:8080 
 The app will be live there.
