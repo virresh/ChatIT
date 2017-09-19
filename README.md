@@ -11,6 +11,7 @@ python app.py
 Now visit localhost:8080 
 The app will be live there.
 
-Currently hosted on https://chatitflask.herokuapp.com/
+Currently deployed at https://chatitflask.herokuapp.com/
 
 Code linted with [coala](https://coala.io/#/home)
+
