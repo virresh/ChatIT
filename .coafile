@@ -1,0 +1,12 @@
+[all]
+use_spaces = True
+
+[python]
+files = *.py
+bears = PEP8Bear,SpaceConsistencyBear, QuotesBear
+language = python
+preferred_quotation = '
+
+[markdown]
+files = *.md
+bears = InvalidLinkBear
