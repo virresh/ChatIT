@@ -1,11 +1,9 @@
-[all]
-use_spaces = True
-
 [python]
 files = *.py
 bears = PEP8Bear,SpaceConsistencyBear, QuotesBear
 language = python
 preferred_quotation = '
+use_spaces = True
 
 [markdown]
 files = *.md

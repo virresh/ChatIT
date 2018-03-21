@@ -7,17 +7,17 @@ import time
 import os
 from flask import Flask, render_template, request, session, escape
 
-app = Flask(__name__)  # Ignore PyLintBear (C0103)
+app = Flask(__name__)
 app.secret_key = 'MadeByViresh'
 
 
 @app.route('/')
 def form():
-    n = ''  # Ignore PyLintBear (C0103)
+    n = ''
     if 'name' in session:
-        n = escape(session['name'])  # Ignore PyLintBear (C0103)
-    f2 = open('chat.txt', 'r')  # Ignore PyLintBear (C0103)
-    l = []  # Ignore PyLintBear (C0103)
+        n = escapes(session['name'])
+    f2 = open('chat.txt', 'r')
+    l = []
     for lines in f2:
         l.append(lines)
     f2.close()
@@ -35,7 +35,7 @@ def sendText():
     file = open('chat.txt', 'a')
     file.write(st + '  ' + name + ' : ' + t + '\r\n')
     file.close()
-    return render_template('home.html', name=name)  # ,li=l)
+    return render_template('home.html', name=name)
 
 
 @app.route('/chat/')
