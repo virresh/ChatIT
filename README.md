@@ -15,3 +15,4 @@ Currently deployed at https://chatitflask.herokuapp.com/
 
 Code linted with [coala](https://coala.io/#/home)
 
+Used PEP8 guidelines
