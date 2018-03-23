@@ -18,3 +18,5 @@ Code linted with [coala](https://coala.io/#/home)
 Coala Bears used : 
 - PEP8Bear
 - Space consistency bear
+- Quotes bear
+- Invalid link bear
